@@ -264,8 +264,8 @@ void st_remove(struct st_node **root, struct st_node *del)
         if (del == *root)
             *root = least;
 
-        AAAA; //TODO
-        BBBB; //TODO
+        st_replace_right(del, least);      // XXX: AAAA
+        st_update(root, st_right(least));  // XXX: BBBB
         return;
     }
 
@@ -274,8 +274,8 @@ void st_remove(struct st_node **root, struct st_node *del)
         if (del == *root)
             *root = most;
 
-        CCCC; //TODO
-        DDDD; //TODO
+        st_replace_left(del, most);      // XXX: CCCC
+        st_update(root, st_left(most));  // XXX: DDDD
         return;
     }
 
@@ -292,7 +292,7 @@ void st_remove(struct st_node **root, struct st_node *del)
     else
         st_right(parent) = 0;
 
-    EEEE; //TODO
+    st_update(root, parent);  // XXX: EEEE
 }
 
 /* Test program */
@@ -408,12 +408,12 @@ static void __treeint_dump(struct st_node *n, int depth)
     if (!n)
         return;
 
-    __treeint_dump(FFFF, depth + 1); //TODO
+    __treeint_dump(st_left(n), /* XXX: FFFF */ depth + 1);
 
     struct treeint *v = treeint_entry(n);
     printf("%d\n", v->value);
 
-    __treeint_dump(GGGG, depth + 1); //TODO
+    __treeint_dump(st_right(n) /* XXX: GGGG */, depth + 1);
 }
 
 void treeint_dump()
