@@ -1,14 +1,14 @@
-#include <stdio.h>
-#include <stdint.h>
 #include <stddef.h>
+#include <stdint.h>
+#include <stdio.h>
 
 #define PRINT_ALIGN_UP(addr, n) \
-     printf("align_up(%d, %d) = %ld\n", addr, n, align_up(addr, n))
+    printf("align_up(%d, %d) = %ld\n", addr, n, align_up(addr, n))
 
 static inline uintptr_t align_up(uintptr_t sz, size_t alignment)
 {
     uintptr_t mask = alignment - 1;
-    if ((alignment & mask) == 0) {  /* power of two? */
+    if ((alignment & mask) == 0) { /* power of two? */
         return (sz & ~mask) + ((sz & mask) > 0) * alignment;
     }
     return (((sz + mask) / alignment) * alignment);
