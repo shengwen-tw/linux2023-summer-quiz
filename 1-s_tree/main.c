@@ -12,6 +12,7 @@
 #define treeint_dump    streeint_dump
 #define treeint_remove  streeint_remove
 #define treeint_destroy streeint_destroy
+
 int main()
 {
     srand(time(0));

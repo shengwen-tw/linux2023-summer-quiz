@@ -1,12 +1,18 @@
 CFLAGS=-I./
 
-SRC=main.c \
-	rbtree.c \
+SRC=rbtree.c \
 	rbtree_int.c \
 	stree_int.c
 
-all:
-	gcc ${CFLAGS} -o s_tree ${SRC} 
+all: perf
+	gcc ${CFLAGS} -o s_tree ${SRC} main.c
+
+perf:
+	gcc ${CFLAGS} -o perf ${SRC} perf.c
+	./perf
+	octave plot_csv.m 
 
 clang-format:
 	clang-format -i ./*.c
+
+.PHONY: perf
