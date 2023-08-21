@@ -1,5 +1,10 @@
+CFLAGS=-I./
+
+SRC=main.c \
+	rbtree.c
+
 all:
-	gcc -o s_tree main.c
+	gcc ${CFLAGS} -o s_tree ${SRC} 
 
 clang-format:
 	clang-format -i ./*.c
