@@ -1,5 +1,5 @@
 all:
-	gcc -Wall -o qsort qsort_mt.c -lpthread
+	gcc -Wall -fsanitize=thread -o qsort qsort_mt.c -lpthread
 
 clang-format:
 	clang-format -i ./*.c
